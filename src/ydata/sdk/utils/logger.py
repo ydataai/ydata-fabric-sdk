@@ -2,16 +2,16 @@
     In this file it can be found both the logic for the logger and decorator function
 """
 import contextlib
+import logging
 import os
 import platform
 import subprocess
-
-import logging
 
 import pandas as pd
 import requests
 
 from ydata.sdk.datasources._models.datatype import DataSourceType
+
 
 def is_running_in_databricks():
     mask = "DATABRICKS_RUNTIME_VERSION" in os.environ

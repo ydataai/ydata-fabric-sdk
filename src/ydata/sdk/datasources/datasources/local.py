@@ -7,6 +7,7 @@ from ydata.sdk.datasources._models.datatype import DataSourceType
 from ydata.sdk.datasources._models.filetype import FileType
 from ydata.sdk.datasources.datasource import DataSource
 
+
 class LocalDataSource(DataSource):
 
     def __init__(

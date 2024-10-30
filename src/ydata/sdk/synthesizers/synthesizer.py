@@ -17,7 +17,7 @@ from ydata.sdk.common.exceptions import (AlreadyFittedError, DataSourceAttrsErro
 from ydata.sdk.common.logger import create_logger
 from ydata.sdk.common.types import UID, Project
 from ydata.sdk.connectors import LocalConnector
-from ydata.sdk.datasources import DataSource #, LocalDataSource
+from ydata.sdk.datasources import DataSource  # , LocalDataSource
 from ydata.sdk.datasources._models.attributes import DataSourceAttrs
 from ydata.sdk.datasources._models.datatype import DataSourceType
 from ydata.sdk.datasources._models.metadata.data_types import DataType
@@ -27,11 +27,11 @@ from ydata.sdk.synthesizers._models.status import PrepareState, Status, Training
 from ydata.sdk.synthesizers._models.synthesizer import Synthesizer as mSynthesizer
 from ydata.sdk.synthesizers._models.synthesizers_list import SynthesizersList
 from ydata.sdk.synthesizers.anonymizer import build_and_validate_anonimization
+from ydata.sdk.utils.logger import SDKLogger
 from ydata.sdk.utils.model_mixin import ModelFactoryMixin
 
-from ydata.sdk.utils.logger import SDKLogger
-
 logger = SDKLogger(name="SynthesizersLogger")
+
 
 @typechecked
 class BaseSynthesizer(ABC, ModelFactoryMixin):
@@ -174,7 +174,7 @@ class BaseSynthesizer(ABC, ModelFactoryMixin):
                     "Argument `datatype` is mandatory for pandas.DataFrame training data")
         elif datatype == DataSourceType.MULTITABLE:
             tables = [t for t in X.tables.keys()]
-            #Does it make sense to add more validations here?
+            # Does it make sense to add more validations here?
         else:
             columns = [c.name for c in X.metadata.columns]
 

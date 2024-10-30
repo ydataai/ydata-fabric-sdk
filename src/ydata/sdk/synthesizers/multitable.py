@@ -1,9 +1,8 @@
 from __future__ import annotations
 
 from time import sleep
-from typing import Dict, List, Optional, Union
+from typing import Dict, Optional, Union
 
-from ydata.datascience.common import PrivacyLevel
 from ydata.sdk.common.client import Client
 from ydata.sdk.common.config import BACKOFF
 from ydata.sdk.common.exceptions import ConnectorError, InputError
