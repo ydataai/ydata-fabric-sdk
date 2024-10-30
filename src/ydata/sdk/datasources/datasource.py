@@ -17,6 +17,8 @@ from ydata.sdk.datasources._models.status import State, Status
 from ydata.sdk.utils.model_mixin import ModelFactoryMixin
 from ydata.sdk.utils.model_utils import filter_dict
 
+from src.ydata.sdk.synthesizers.synthesizer import logger
+
 
 class DataSource(ModelFactoryMixin):
     """A [`DataSource`][ydata.sdk.datasources.DataSource] represents a dataset
@@ -127,8 +129,8 @@ class DataSource(ModelFactoryMixin):
         data: list = response.json()
         datasource_type = CONNECTOR_TO_DATASOURCE.get(
             ConnectorType(data['connector']['type']))
-        model = DataSource._model_from_api(data, datasource_type)
-        datasource = DataSource._init_from_model_data(model)
+        datasource = DataSource._model_from_api(data, datasource_type)
+        #datasource = DataSource._init_from_model_data(model)
         datasource._project = project
         return datasource
 
@@ -211,6 +213,8 @@ class DataSource(ModelFactoryMixin):
     @staticmethod
     def _model_from_api(data: Dict, datasource_type: Type[mDataSource]) -> mDataSource:
         data['datatype'] = data.pop('dataType', None)
+        data['connector_ref'] = data['connector']['uid']
+        data['connector_type'] = data['connector']['type']
         data = filter_dict(datasource_type, data)
         model = datasource_type(**data)
         return model

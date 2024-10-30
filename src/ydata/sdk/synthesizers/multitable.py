@@ -44,16 +44,9 @@ class MultiTableSynthesizer(BaseSynthesizer):
         self.__write_connector = connector.uid
 
     def fit(self, X: DataSource,
-            privacy_level: PrivacyLevel = PrivacyLevel.HIGH_FIDELITY,
             datatype: Optional[Union[DataSourceType, str]] = None,
-            sortbykey: Optional[Union[str, List[str]]] = None,
-            entities: Optional[Union[str, List[str]]] = None,
-            generate_cols: Optional[List[str]] = None,
-            exclude_cols: Optional[List[str]] = None,
             dtypes: Optional[Dict[str, Union[str, DataType]]] = None,
-            target: Optional[str] = None,
-            anonymize: Optional[dict] = None,
-            condition_on: Optional[List[str]] = None) -> None:
+            anonymize: Optional[dict] = None) -> None:
         """Fit the synthesizer.
 
         The synthesizer accepts as training dataset a YData [`DataSource`][ydata.sdk.datasources.DataSource].
@@ -62,8 +55,8 @@ class MultiTableSynthesizer(BaseSynthesizer):
         Arguments:
             X (DataSource): DataSource to Train
         """
-
-        self._fit_from_datasource(X, datatype=DataSourceType.MULTITABLE)
+        #self._fit_from_datasource(X, datatype=DataSourceType.MULTITABLE)
+        super().fit(X, datatype=DataSourceType.MULTITABLE)
 
     def sample(self, frac: Union[int, float] = 1, write_connector: Optional[Union[Connector, UID]] = None) -> None:
         """Sample from a [`MultiTableSynthesizer`][ydata.sdk.synthesizers.MultiTableSynthesizer]

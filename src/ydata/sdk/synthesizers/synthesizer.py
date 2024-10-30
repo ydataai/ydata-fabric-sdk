@@ -17,7 +17,7 @@ from ydata.sdk.common.exceptions import (AlreadyFittedError, DataSourceAttrsErro
 from ydata.sdk.common.logger import create_logger
 from ydata.sdk.common.types import UID, Project
 from ydata.sdk.connectors import LocalConnector
-from ydata.sdk.datasources import DataSource, LocalDataSource
+from ydata.sdk.datasources import DataSource #, LocalDataSource
 from ydata.sdk.datasources._models.attributes import DataSourceAttrs
 from ydata.sdk.datasources._models.datatype import DataSourceType
 from ydata.sdk.datasources._models.metadata.data_types import DataType
@@ -29,6 +29,9 @@ from ydata.sdk.synthesizers._models.synthesizers_list import SynthesizersList
 from ydata.sdk.synthesizers.anonymizer import build_and_validate_anonimization
 from ydata.sdk.utils.model_mixin import ModelFactoryMixin
 
+from ydata.sdk.utils.logger import SDKLogger
+
+logger = SDKLogger(name="SynthesizersLogger")
 
 @typechecked
 class BaseSynthesizer(ABC, ModelFactoryMixin):
@@ -100,6 +103,11 @@ class BaseSynthesizer(ABC, ModelFactoryMixin):
             anonymize (Optional[str]): (optional) fields to anonymize and the anonymization strategy
             condition_on: (Optional[List[str]]): (optional) list of features to condition upon
         """
+
+        logger.info(dataframe=X,
+                    datatype=datatype.value,
+                    method='synthesizer')
+
         if self._already_fitted():
             raise AlreadyFittedError()
 
@@ -107,10 +115,12 @@ class BaseSynthesizer(ABC, ModelFactoryMixin):
 
         dataset_attrs = self._init_datasource_attributes(
             sortbykey, entities, generate_cols, exclude_cols, dtypes)
+
         self._validate_datasource_attributes(X, dataset_attrs, datatype, target)
 
         # If the training data is a pandas dataframe, we first need to create a data source and then the instance
         if isinstance(X, pdDataFrame):
+            from ydata.sdk.datasources import LocalDataSource
             if X.empty:
                 raise EmptyDataError("The DataFrame is empty")
             self._logger.info('creating local connector with pandas dataframe')
@@ -131,9 +141,12 @@ class BaseSynthesizer(ABC, ModelFactoryMixin):
         if isinstance(dataset_attrs, dict):
             dataset_attrs = DataSourceAttrs(**dataset_attrs)
 
-        self._fit_from_datasource(
-            X=_X, datatype=datatype, dataset_attrs=dataset_attrs, target=target,
-            anonymize=anonymize, privacy_level=privacy_level, condition_on=condition_on)
+        if datatype == DataSourceType.MULTITABLE:
+            self._fit_from_datasource(_X, datatype=DataSourceType.MULTITABLE)
+        else:
+            self._fit_from_datasource(
+                X=_X, datatype=datatype, dataset_attrs=dataset_attrs, target=target,
+                anonymize=anonymize, privacy_level=privacy_level, condition_on=condition_on)
 
     @staticmethod
     def _init_datasource_attributes(
@@ -159,30 +172,34 @@ class BaseSynthesizer(ABC, ModelFactoryMixin):
             if datatype is None:
                 raise DataTypeMissingError(
                     "Argument `datatype` is mandatory for pandas.DataFrame training data")
+        elif datatype == DataSourceType.MULTITABLE:
+            tables = [t for t in X.tables.keys()]
+            #Does it make sense to add more validations here?
         else:
             columns = [c.name for c in X.metadata.columns]
 
-        if target is not None and target not in columns:
-            raise DataSourceAttrsError(
-                "Invalid target: column '{target}' does not exist")
-
-        if datatype == DataSourceType.TIMESERIES:
-            if not dataset_attrs.sortbykey:
+        if datatype != DataSourceType.MULTITABLE:
+            if target is not None and target not in columns:
                 raise DataSourceAttrsError(
-                    "The argument `sortbykey` is mandatory for timeseries datasource.")
+                    "Invalid target: column '{target}' does not exist")
 
-        invalid_fields = {}
-        for field, v in dataset_attrs.dict().items():
-            field_columns = v if field != 'dtypes' else v.keys()
-            not_in_cols = [c for c in field_columns if c not in columns]
-            if len(not_in_cols) > 0:
-                invalid_fields[field] = not_in_cols
+            if datatype == DataSourceType.TIMESERIES:
+                if not dataset_attrs.sortbykey:
+                    raise DataSourceAttrsError(
+                        "The argument `sortbykey` is mandatory for timeseries datasource.")
 
-        if len(invalid_fields) > 0:
-            error_msgs = ["\t- Field '{}': columns {} do not exist".format(
-                f, ', '.join(v)) for f, v in invalid_fields.items()]
-            raise DataSourceAttrsError(
-                "The dataset attributes are invalid:\n {}".format('\n'.join(error_msgs)))
+            invalid_fields = {}
+            for field, v in dataset_attrs.dict().items():
+                field_columns = v if field != 'dtypes' else v.keys()
+                not_in_cols = [c for c in field_columns if c not in columns]
+                if len(not_in_cols) > 0:
+                    invalid_fields[field] = not_in_cols
+
+            if len(invalid_fields) > 0:
+                error_msgs = ["\t- Field '{}': columns {} do not exist".format(
+                    f, ', '.join(v)) for f, v in invalid_fields.items()]
+                raise DataSourceAttrsError(
+                    "The dataset attributes are invalid:\n {}".format('\n'.join(error_msgs)))
 
     @staticmethod
     def _metadata_to_payload(
