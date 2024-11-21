@@ -26,7 +26,8 @@ def get_datasource_info(dataframe, datatype):
     """
     if isinstance(dataframe, pd.DataFrame):
         connector = 'csv'
-        nrows, ncols = dataframe.shape[0], dataframe.shape[1]  # calculate the number of rows and cols
+        nrows, ncols = dataframe.shape[0], dataframe.shape[1]
+        ntables=None # calculate the number of rows and cols
     else:
         connector = dataframe.connector_type
         if DataSourceType(datatype) != DataSourceType.MULTITABLE:

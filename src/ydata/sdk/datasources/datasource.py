@@ -2,7 +2,6 @@ from time import sleep
 from typing import Dict, Optional, Type, Union  # noqa: TYP001
 from uuid import uuid4
 
-from src.ydata.sdk.synthesizers.synthesizer import logger
 from ydata.sdk.common.client import Client
 from ydata.sdk.common.client.utils import init_client
 from ydata.sdk.common.config import BACKOFF, LOG_LEVEL

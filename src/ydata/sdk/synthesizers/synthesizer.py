@@ -68,7 +68,7 @@ class BaseSynthesizer(ABC, ModelFactoryMixin):
     def project(self) -> Project:
         return self._project or self._client.project
 
-    def fit(self, X: Union[DataSource, pdDataFrame],
+    def fit(self, X,
             privacy_level: PrivacyLevel = PrivacyLevel.HIGH_FIDELITY,
             datatype: Optional[Union[DataSourceType, str]] = None,
             sortbykey: Optional[Union[str, List[str]]] = None,
@@ -165,7 +165,7 @@ class BaseSynthesizer(ABC, ModelFactoryMixin):
         return DataSourceAttrs(**dataset_attrs)
 
     @staticmethod
-    def _validate_datasource_attributes(X: Union[DataSource, pdDataFrame], dataset_attrs: DataSourceAttrs, datatype: DataSourceType, target: Optional[str]):
+    def _validate_datasource_attributes(X, dataset_attrs: DataSourceAttrs, datatype: DataSourceType, target: Optional[str]):
         columns = []
         if isinstance(X, pdDataFrame):
             columns = X.columns
@@ -242,7 +242,7 @@ class BaseSynthesizer(ABC, ModelFactoryMixin):
 
     def _fit_from_datasource(
         self,
-        X: DataSource,
+        X,
         datatype: DataSourceType,
         privacy_level: Optional[PrivacyLevel] = None,
         dataset_attrs: Optional[DataSourceAttrs] = None,

@@ -42,7 +42,7 @@ class MultiTableSynthesizer(BaseSynthesizer):
         connector = self._check_or_fetch_connector(write_connector)
         self.__write_connector = connector.uid
 
-    def fit(self, X: DataSource,
+    def fit(self, X,
             datatype: Optional[Union[DataSourceType, str]] = None,
             dtypes: Optional[Dict[str, Union[str, DataType]]] = None,
             anonymize: Optional[dict] = None) -> None:

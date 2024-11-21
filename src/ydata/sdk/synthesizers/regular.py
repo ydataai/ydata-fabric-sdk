@@ -33,7 +33,7 @@ class RegularSynthesizer(BaseSynthesizer):
             }
         return self._sample(payload=payload)
 
-    def fit(self, X: Union[DataSource, pdDataFrame],
+    def fit(self, X,
             privacy_level: PrivacyLevel = PrivacyLevel.HIGH_FIDELITY,
             entities: Optional[Union[str, List[str]]] = None,
             generate_cols: Optional[List[str]] = None,
