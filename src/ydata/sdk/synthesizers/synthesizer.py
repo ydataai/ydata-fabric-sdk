@@ -17,7 +17,6 @@ from ydata.sdk.common.exceptions import (AlreadyFittedError, DataSourceAttrsErro
 from ydata.sdk.common.logger import create_logger
 from ydata.sdk.common.types import UID, Project
 from ydata.sdk.connectors import LocalConnector
-from ydata.sdk.datasources import DataSource  # , LocalDataSource
 from ydata.sdk.datasources._models.attributes import DataSourceAttrs
 from ydata.sdk.datasources._models.datatype import DataSourceType
 from ydata.sdk.datasources._models.metadata.data_types import DataType

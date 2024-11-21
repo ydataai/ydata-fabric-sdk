@@ -4,7 +4,6 @@ from pandas import DataFrame as pdDataFrame
 
 from ydata.datascience.common import PrivacyLevel
 from ydata.sdk.common.exceptions import InputError
-from ydata.sdk.datasources import DataSource
 from ydata.sdk.datasources._models.datatype import DataSourceType
 from ydata.sdk.datasources._models.metadata.data_types import DataType
 from ydata.sdk.synthesizers.synthesizer import BaseSynthesizer

@@ -8,7 +8,6 @@ from ydata.sdk.common.config import BACKOFF
 from ydata.sdk.common.exceptions import ConnectorError, InputError
 from ydata.sdk.common.types import UID, Project
 from ydata.sdk.connectors.connector import Connector, ConnectorType
-from ydata.sdk.datasources import DataSource
 from ydata.sdk.datasources._models.datatype import DataSourceType
 from ydata.sdk.datasources._models.metadata.data_types import DataType
 from ydata.sdk.synthesizers.synthesizer import BaseSynthesizer
