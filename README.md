@@ -5,7 +5,7 @@
 [![downloads](https://pepy.tech/badge/ydata-sdk/month)](https://pepy.tech/project/ydata-sdk)
 
 ---
-🚀 YData Fabric SDK 🎉 
+🚀 YData Fabric SDK 🎉
 Fabric's platform capabilities at the distance of a Python command!
 
 
