@@ -7,7 +7,7 @@ requires = [
 ]
 
 [project]
-name = "ydata-sdk"
+name = "ydata-fabric-sdk"
 authors = [
     {name = "YData", email = "opensource@ydata.ai"},
 ]
@@ -50,7 +50,7 @@ dependencies = [
 file = "LICENSE"
 
 [project.urls]
-Home = "https://github.com/ydataai/ydata-sdk"
+Home = "https://github.com/ydataai/ydata-fabric-sdk"
 
 [project.optional-dependencies]
 dev = [
