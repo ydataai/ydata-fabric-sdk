@@ -33,7 +33,7 @@ The list of available connectors can be found here [add a link].
     ```
 
 The synthesis process returns a `pandas.DataFrame` object.
-Note that if you are using the `ydata-sdk` free version, all of your data is sent to a remote cluster on YData's infrastructure.
+Note that if you are using the `ydata-fabric-sdk` free version, all of your data is sent to a remote cluster on YData's infrastructure.
 
 ## Data synthesis flow
 The process of data synthesis can be described into the following steps:

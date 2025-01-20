@@ -1,4 +1,4 @@
-name: ydata-sdk
+name: ydata-fabric-sdk
 channels:
   - defaults
 dependencies:
@@ -17,4 +17,4 @@ dependencies:
   - wheel=0.41.2=py310hecd8cb5_0
   - xz=5.4.5=h6c40b1e_0
   - zlib=1.2.13=h4dc903c_0
-prefix: /usr/local/Caskroom/miniconda/base/envs/ydata-sdk
+prefix: /usr/local/Caskroom/miniconda/base/envs/ydata-fabric-sdk

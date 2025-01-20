@@ -4,14 +4,14 @@
 <p align="center"><img width="500" src="https://assets.ydata.ai/sdk/logo_SDK_col_red_black.png" alt="YData Logo"></p>
 <p></p>
 
-[![pypi](https://img.shields.io/pypi/v/ydata-sdk)](https://pypi.org/project/ydata-sdk)
+[![pypi](https://img.shields.io/pypi/v/ydata-fabric-sdk)](https://pypi.org/project/ydata-fabric-sdk)
 ![Pythonversion](https://img.shields.io/badge/python-3.8%20%7C%203.9%20%7C%203.10%20%7C%203.11%20%7C%203.12-blue)
-[![downloads](https://pepy.tech/badge/ydata-sdk/month)](https://pepy.tech/project/ydata-sdk)
+[![downloads](https://pepy.tech/badge/ydata-fabric-sdk/month)](https://pepy.tech/project/ydata-fabric-sdk)
 
 ---
 🚀 YData SDK Version 1.0 Released! 🎉 - Data quality everywhere!
 
-*ydata-sdk* v1 is here! Create a [YData Fabric account](https://ydata.ai/ydata-fabric-free-trial) so you can start using today!
+*ydata-fabric-sdk* v1 is here! Create a [YData Fabric account](https://ydata.ai/ydata-fabric-free-trial) so you can start using today!
 
 We are excited to announce the release of YData Fabric SDK v1.0! This major release marks the beginning of long-term support for the package,
 ensuring stability, continuous improvements, and ongoing support for all users. YData SDK empowers developers with easy access to state-of-the-art

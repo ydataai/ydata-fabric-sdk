@@ -14,7 +14,7 @@ Dissecting any time-series dataset, we see differences in variables' behavior th
 - Variables that refer to entities (single or multiple entities)
 - Variables that are attributes (those that don't depend on time but rather on the entity)
 
-For a more detailed tutorial please check [YData Fabric Academy ydata-sdk notebooks](https://github.com/ydataai/academy/tree/master).
+For a more detailed tutorial please check [YData Fabric Academy ydata-fabric-sdk notebooks](https://github.com/ydataai/academy/tree/master).
 
 Below find an example:
 

@@ -13,15 +13,15 @@ Prior to the package installation, it is recommended the creation of a virtual o
     pyenv virtualenv 3.10 ydatasdk
     ```
 
-And install `ydata-sdk`
+And install `ydata-fabric-sdk`
 
 === "pypi"
     ``` commandline
-    pip install ydata-sdk
+    pip install ydata-fabric-sdk
     ```
 
 ##Authentication
-Once you've installed `ydata-sdk` package you will need a token to run the functionalities.
+Once you've installed `ydata-fabric-sdk` package you will need a token to run the functionalities.
 YData SDK uses a token based authentication system. To get access to your token, you need to create a YData account.
 
 YData SDK offers a free-trial and an enterprise version. To access your free-trial token, you need to create a [**YData account**](https://ydata.ai/ydata-fabric-free-trial).

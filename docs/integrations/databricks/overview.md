@@ -26,7 +26,7 @@ These connectors streamline data transfer and ensure seamless interoperability b
 - Data synchronization
 
 ### SDK
-The ^^[YData Fabric SDK](https://pypi.org/project/ydata-sdk/)^^ offers a programmatic approach to integrating with Databricks.
+The ^^[YData Fabric SDK](https://pypi.org/project/ydata-fabric-sdk/)^^ offers a programmatic approach to integrating with Databricks.
 It provides developers with the tools and libraries needed to automate and customize data workflows between
 YData Fabric and Databricks.
 
