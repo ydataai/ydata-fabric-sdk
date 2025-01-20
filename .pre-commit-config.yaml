@@ -49,7 +49,7 @@ repos:
       - id: python-check-blanket-noqa
         name: Enforce specifc code for noqua annotation
   - repo: https://github.com/hadialqattan/pycln
-    rev: v2.4.0
+    rev: v2.5.0
     hooks:
       - id: pycln
         additional_dependencies: [setuptools]
