@@ -1,15 +1,15 @@
 # YData Fabric SDK
 
-[![pypi](https://img.shields.io/pypi/v/ydata-sdk)](https://pypi.org/project/ydata-sdk)
+[![pypi](https://img.shields.io/pypi/v/ydata-fabric-sdk)](https://pypi.org/project/ydata-fabric-sdk)
 ![Pythonversion](https://img.shields.io/badge/python-3.8%20%7C%203.9%20%7C%203.10%20%7C%203.11%20%7C%203.12-blue)
-[![downloads](https://pepy.tech/badge/ydata-sdk/month)](https://pepy.tech/project/ydata-sdk)
+[![downloads](https://pepy.tech/badge/ydata-fabric-sdk/month)](https://pepy.tech/project/ydata-fabric-sdk)
 
 ---
 🚀 YData Fabric SDK 🎉
 Fabric's platform capabilities at the distance of a Python command!
 
 
-*ydata-sdk* is here! Create a [YData Fabric account](https://ydata.ai/register) so you can start using today!
+*ydata-fabric-sdk* is here! Create a [YData Fabric account](https://ydata.ai/register) so you can start using today!
 
 YData Fabric SDK empowers developers with easy access to state-of-the-art data quality tools and generative AI capabilities. Stay tuned for more updates and new features!
 
