@@ -1,6 +1,6 @@
 site_name: "YData Fabric"
-repo_url: https://github.com/ydataai/ydata-sdk
-repo_name: ydataai/ydata-sdk
+repo_url: https://github.com/ydataai/ydata-fabric-sdk
+repo_name: ydataai/ydata-fabric-sdk
 edit_uri: ""
 dev_addr: 0.0.0.0:1235
 site_dir: "static/docs"

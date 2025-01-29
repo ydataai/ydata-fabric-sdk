@@ -1,6 +1,6 @@
 # YData SDK in Databricks Notebooks
 
-The [YData Fabric SDK](https://pypi.org/project/ydata-sdk/) provides a powerful set of tools for integrating and enhancing data within Databricks notebooks.
+The [YData Fabric SDK](https://pypi.org/project/ydata-fabric-sdk/) provides a powerful set of tools for integrating and enhancing data within Databricks notebooks.
 This guide covers the installation, basic usage, and advanced features of the Fabric SDK, helping users maximize
 the potential of their data for AI and machine learning applications.
 
@@ -25,7 +25,7 @@ Databricks cluster to optimize performance.
 
 To install the YData SDK in a Databricks notebook, use the following command:
 ```python
-%pip install ydata-sdk
+%pip install ydata-fabric-sdk
 dbutils.library.restartPython()
 ```
 Ensure the installation is successful before proceeding to the next steps.
@@ -144,7 +144,7 @@ from ydata.sdk.synthesizers import RegularSynthesizer
 pandas_df = df.toPandas()
 pandas_df = pandas_df.drop('ID', axis=1)
 
-# Train a synthetic data generator using ydata-sdk
+# Train a synthetic data generator using ydata-fabric-sdk
 synth = RegularSynthesizer(name='Synth credit scoring | Conditional')
 synth.fit(pandas_df, condition_on='Label')
 

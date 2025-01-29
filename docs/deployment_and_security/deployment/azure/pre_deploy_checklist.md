@@ -71,10 +71,17 @@ Check and activate (if needed) resource providers for the subscription where the
 - Go to Resource Providers
 - Using the filter, check if you have the following resource providers registered. If not, please click the resource provider and click *“Register”*.
 
+    - **Microsoft.Authorization**
     - **Microsoft.Compute**
     - **Microsoft.ContainerInstance**
+    - **Microsoft.ContainerRegistry**
+    - **Microsoft.ContainerService**
+    - **Microsoft.KeyVault**
+    - **Microsoft.ManagedIdentity**
+    - **Microsoft.Network**
+    - **Microsoft.Resources**
+    - **Microsoft.Storage**
 
-    ![azure compute](../../../assets/deployment_security/azure/azure_contributor.png){: style="width:75%"}
     ![azure container](../../../assets/deployment_security/azure/azure_container.png){: style="width:75%"}
 
 For more information check ^^[Azure's official documentation on resource providers](https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/resource-providers-and-types)^^

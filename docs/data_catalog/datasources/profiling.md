@@ -35,11 +35,6 @@ as it automatically calculated detailed statistics, visualizations, and insights
 
 ## Multivariate profiling
 
-<figure markdown>
-   ![Multivariate profiling ydata-profiling](../_static/img/multivariate_profiling.png){width="700"}
-   <figcaption>Multivariate profiling metrics and visualization</figcaption>
-</figure>
-
 This section provides essentials insights into the relationships between variables through correlations matrices and interactions.
 The correlation view computes and presents correlation coefficients between pairs of numerical variables, helping to identify potential linear relationships.
 This assists data analysts and scientists in understanding how variables change together and highlights possible multi collinearity issues.
@@ -63,6 +58,12 @@ Fabric Correlations are calculated pairwise and depending on the type schema:
 - numerical to categorical: Cramer's V association coefficient with the numerical variable discretized automatically
 
 ### Interactions
+
+<figure markdown>
+   ![YData Fabric Correlations tab](../../assets/data_catalog/datasources/fabric_interactions.png){width="700"}
+   <figcaption>Correlations section</figcaption>
+</figure>
+
 The interactions plot visually represents how two variables influence each other across different sections of the data.
 It goes beyond simple correlations by providing an interactive view of how one variable changes in relation to another.
 This plot helps users detect non-linear relationships and complex patterns, allowing for deeper insights during Exploratory Data Analysis (EDA).
@@ -78,8 +79,8 @@ allowing users to quickly identify which variables have the most significant amo
 ## Outliers **
 
 <figure markdown>
-   ![Outliers profiling](../_static/img/outliers.png){width="700"}
-   <figcaption>Outliers identification</figcaption>
+   ![YData Fabric Profiling tab](../../assets/data_catalog/datasources/fabric_outliers.png){width="700"}
+   <figcaption>Profiling sections</figcaption>
 </figure>
 
 This section provides a comprehensive profiling over the potential dataset outliers. You can validate and observe outliers presence and deviation from the general distribution of numerical variables
