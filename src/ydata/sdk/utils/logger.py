@@ -29,7 +29,7 @@ def get_datasource_info(dataframe, datatype):
     if isinstance(dataframe, pd.DataFrame):
         connector = 'csv'
         nrows, ncols = dataframe.shape[0], dataframe.shape[1]
-        ntables = None # calculate the number of rows and cols
+        ntables = None  # calculate the number of rows and cols
     else:
         connector = dataframe.connector_type
         if DataSourceType(datatype) != DataSourceType.MULTITABLE:
@@ -51,7 +51,8 @@ def analytics_features(datatype: str, connector: str, nrows: int, ncols: int, nt
     package_version = __version__
 
     if (
-        bool(os.getenv("YDATA_FABRIC_SDK_NO_ANALYTICS")) is not True and package_version != "0.0.dev0"
+        bool(os.getenv("YDATA_FABRIC_SDK_NO_ANALYTICS")
+             ) is not True and package_version != "0.0.dev0"
     ):
         try:
             subprocess.check_output("nvidia-smi")
@@ -82,7 +83,7 @@ class SDKLogger(logging.Logger):
     def __init__(self, name: str, level: int = logging.INFO):
         super().__init__(name, level)
 
-    def info(self, dataframe, datatype: str, method:str) -> None:  # noqa: ANN001
+    def info(self, dataframe, datatype: str, method: str) -> None:  # noqa: ANN001
 
         dbx = is_running_in_databricks()
 
