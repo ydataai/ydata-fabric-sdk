@@ -16,6 +16,8 @@ class DataSource:
     datatype: Optional[DataSourceType] = None
     metadata: Optional[Metadata] = None
     status: Optional[Status] = None
+    connector_ref: Optional[str] = None
+    connector_type: Optional[str] = None
 
     def __post_init__(self):
         if self.metadata is not None:
