@@ -42,14 +42,13 @@ def get_datasource_info(dataframe, datatype):
 
 def analytics_features(datatype: str, connector: str, nrows: int, ncols: int, ntables: int, method: str, dbx: str) -> None:
     """
-        Returns metrics and analytics from ydata-sdk
+        Returns metrics and analytics from ydata-fabric-sdk
     """
-    endpoint = "https://packages.ydata.ai/ydata-sdk?"
-    #package_version = __version__
+    endpoint = "https://packages.ydata.ai/ydata-fabric-sdk?"
+    package_version = __version__
 
     if (
-        bool(os.getenv("YDATA_SDK_NO_ANALYTICS")) is not True
-        #and package_version != "0.0.dev0"
+        bool(os.getenv("YDATA_FABRIC_SDK_NO_ANALYTICS")) is not True and package_version != "0.0.dev0"
     ):
         try:
             subprocess.check_output("nvidia-smi")
