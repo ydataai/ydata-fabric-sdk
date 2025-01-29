@@ -10,6 +10,7 @@ import subprocess
 import pandas as pd
 import requests
 
+from ydata.sdk import __version__
 from ydata.sdk.datasources._models.datatype import DataSourceType
 
 
@@ -20,6 +21,7 @@ def is_running_in_databricks():
     else:
         return str(mask)
 
+
 def get_datasource_info(dataframe, datatype):
     """
         calculate required datasource info
@@ -27,18 +29,19 @@ def get_datasource_info(dataframe, datatype):
     if isinstance(dataframe, pd.DataFrame):
         connector = 'csv'
         nrows, ncols = dataframe.shape[0], dataframe.shape[1]
-        ntables=None # calculate the number of rows and cols
+        ntables = None # calculate the number of rows and cols
     else:
         connector = dataframe.connector_type
         if DataSourceType(datatype) != DataSourceType.MULTITABLE:
             nrows = dataframe.metadata.number_of_rows
             ncols = len(dataframe.metadata.columns)
-            ntables=1
+            ntables = 1
         else:
             nrows = 0
             ncols = 0
-            ntables=len(dataframe.tables.keys())
+            ntables = len(dataframe.tables.keys())
     return connector, nrows, ncols, ntables
+
 
 def analytics_features(datatype: str, connector: str, nrows: int, ncols: int, ntables: int, method: str, dbx: str) -> None:
     """
@@ -73,6 +76,7 @@ def analytics_features(datatype: str, connector: str, nrows: int, ncols: int, nt
             )
 
             requests.get(request_message)
+
 
 class SDKLogger(logging.Logger):
     def __init__(self, name: str, level: int = logging.INFO):
