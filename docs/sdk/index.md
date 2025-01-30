@@ -1,5 +1,5 @@
 [![pypi](https://img.shields.io/pypi/v/ydata-fabric-sdk)](https://pypi.org/project/ydata-fabric-sdk)
-![Pythonversion](https://img.shields.io/badge/python-3.8%20%7C%203.9%20%7C%203.10-blue)
+![Pythonversion](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue)
 [![downloads](https://pepy.tech/badge/ydata-fabric-sdk/month)](https://pepy.tech/project/ydata-fabric-sdk)
 
 <img referrerpolicy="no-referrer-when-downgrade" src="https://static.scarf.sh/a.png?x-pxid=08dac575-f8f7-47d1-ad7d-58541aecd025" />
