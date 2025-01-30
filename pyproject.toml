@@ -74,7 +74,7 @@ doc = [
 ]
 test = [
     "pytest==6.2.5",
-    "pytest-bdd==4.0.*",
+    "pytest-bdd==4.1.*",
     "pytest-cov==2.11.*",
     "pytest-xdist==2.2.*",
     "pytest-mccabe>=2.0.0,<3.0.0",
