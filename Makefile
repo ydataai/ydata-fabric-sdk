@@ -66,7 +66,11 @@ install-all-editable: ### Installs regular, dev, doc, and test dependencies
 package:  ### Builds the package in wheel format
 	find src/ydata/sdk/ -name "*.pyi" -delete && rm -rf build dist
 	echo "$(version)" > src/ydata/sdk/VERSION
-	stubgen src/ydata/sdk -o src --export-less
+	stubgen src/ydata/sdk/common -o src --export-less --include-docstrings
+	stubgen src/ydata/sdk/utils -o src --export-less --include-docstrings
+	stubgen src/ydata/sdk/connectors -o src --export-less --include-docstrings
+	stubgen src/ydata/sdk/datasources -o src --export-less --include-docstrings
+	stubgen src/ydata/sdk/synthesizers -o src --export-less --include-docstrings
 	$(PYTHON) -m build --wheel
 	$(PYTHON) -m twine check dist/*
 
