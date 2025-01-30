@@ -3431,7 +3431,8 @@
 
               <details class="quote">
                 <summary>Source code in <code>ydata/sdk/synthesizers/regular.py</code></summary>
-                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-13">13</a></span>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-12">12</a></span>
+<span class="normal"><a href="#__codelineno-0-13">13</a></span>
 <span class="normal"><a href="#__codelineno-0-14">14</a></span>
 <span class="normal"><a href="#__codelineno-0-15">15</a></span>
 <span class="normal"><a href="#__codelineno-0-16">16</a></span>
@@ -3487,65 +3488,64 @@
 <span class="normal"><a href="#__codelineno-0-66">66</a></span>
 <span class="normal"><a href="#__codelineno-0-67">67</a></span>
 <span class="normal"><a href="#__codelineno-0-68">68</a></span>
-<span class="normal"><a href="#__codelineno-0-69">69</a></span>
-<span class="normal"><a href="#__codelineno-0-70">70</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="k">class</span><span class="w"> </span><span class="nc">RegularSynthesizer</span><span class="p">(</span><span class="n">BaseSynthesizer</span><span class="p">):</span>
-<a id="__codelineno-0-14" name="__codelineno-0-14"></a>
-<a id="__codelineno-0-15" name="__codelineno-0-15"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">sample</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_samples</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">condition_on</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pdDataFrame</span><span class="p">:</span>
-<a id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Sample from a [`RegularSynthesizer`][ydata.sdk.synthesizers.RegularSynthesizer]</span>
-<a id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="sd">        instance.</span>
-<a id="__codelineno-0-18" name="__codelineno-0-18"></a>
-<a id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="sd">        Arguments:</span>
-<a id="__codelineno-0-20" name="__codelineno-0-20"></a><span class="sd">            n_samples (int): number of rows in the sample</span>
-<a id="__codelineno-0-21" name="__codelineno-0-21"></a><span class="sd">            condition_on: (Optional[dict]): (optional) conditional sampling parameters</span>
-<a id="__codelineno-0-22" name="__codelineno-0-22"></a>
-<a id="__codelineno-0-23" name="__codelineno-0-23"></a><span class="sd">        Returns:</span>
-<a id="__codelineno-0-24" name="__codelineno-0-24"></a><span class="sd">            synthetic data</span>
-<a id="__codelineno-0-25" name="__codelineno-0-25"></a><span class="sd">        &quot;&quot;&quot;</span>
-<a id="__codelineno-0-26" name="__codelineno-0-26"></a>        <span class="k">if</span> <span class="n">n_samples</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
-<a id="__codelineno-0-27" name="__codelineno-0-27"></a>            <span class="k">raise</span> <span class="n">InputError</span><span class="p">(</span><span class="s2">&quot;Parameter &#39;n_samples&#39; must be greater than 0&quot;</span><span class="p">)</span>
-<a id="__codelineno-0-28" name="__codelineno-0-28"></a>
-<a id="__codelineno-0-29" name="__codelineno-0-29"></a>        <span class="n">payload</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;numberOfRecords&quot;</span><span class="p">:</span> <span class="n">n_samples</span><span class="p">}</span>
-<a id="__codelineno-0-30" name="__codelineno-0-30"></a>        <span class="k">if</span> <span class="n">condition_on</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-<a id="__codelineno-0-31" name="__codelineno-0-31"></a>            <span class="n">payload</span><span class="p">[</span><span class="s2">&quot;extraData&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
-<a id="__codelineno-0-32" name="__codelineno-0-32"></a>                <span class="s2">&quot;condition_on&quot;</span><span class="p">:</span> <span class="n">condition_on</span>
-<a id="__codelineno-0-33" name="__codelineno-0-33"></a>            <span class="p">}</span>
-<a id="__codelineno-0-34" name="__codelineno-0-34"></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sample</span><span class="p">(</span><span class="n">payload</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span>
-<a id="__codelineno-0-35" name="__codelineno-0-35"></a>
-<a id="__codelineno-0-36" name="__codelineno-0-36"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">DataSource</span><span class="p">,</span> <span class="n">pdDataFrame</span><span class="p">],</span>
-<a id="__codelineno-0-37" name="__codelineno-0-37"></a>            <span class="n">privacy_level</span><span class="p">:</span> <span class="n">PrivacyLevel</span> <span class="o">=</span> <span class="n">PrivacyLevel</span><span class="o">.</span><span class="n">HIGH_FIDELITY</span><span class="p">,</span>
-<a id="__codelineno-0-38" name="__codelineno-0-38"></a>            <span class="n">entities</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<a id="__codelineno-0-39" name="__codelineno-0-39"></a>            <span class="n">generate_cols</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<a id="__codelineno-0-40" name="__codelineno-0-40"></a>            <span class="n">exclude_cols</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<a id="__codelineno-0-41" name="__codelineno-0-41"></a>            <span class="n">dtypes</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">DataType</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<a id="__codelineno-0-42" name="__codelineno-0-42"></a>            <span class="n">target</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<a id="__codelineno-0-43" name="__codelineno-0-43"></a>            <span class="n">anonymize</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<a id="__codelineno-0-44" name="__codelineno-0-44"></a>            <span class="n">condition_on</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<a id="__codelineno-0-45" name="__codelineno-0-45"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Fit the synthesizer.</span>
-<a id="__codelineno-0-46" name="__codelineno-0-46"></a>
-<a id="__codelineno-0-47" name="__codelineno-0-47"></a><span class="sd">        The synthesizer accepts as training dataset either a pandas [`DataFrame`][pandas.DataFrame] directly or a YData [`DataSource`][ydata.sdk.datasources.DataSource].</span>
-<a id="__codelineno-0-48" name="__codelineno-0-48"></a>
-<a id="__codelineno-0-49" name="__codelineno-0-49"></a><span class="sd">        Arguments:</span>
-<a id="__codelineno-0-50" name="__codelineno-0-50"></a><span class="sd">            X (Union[DataSource, pandas.DataFrame]): Training dataset</span>
-<a id="__codelineno-0-51" name="__codelineno-0-51"></a><span class="sd">            privacy_level (PrivacyLevel): Synthesizer privacy level (defaults to high fidelity)</span>
-<a id="__codelineno-0-52" name="__codelineno-0-52"></a><span class="sd">            entities (Union[str, List[str]]): (optional) columns representing entities ID</span>
-<a id="__codelineno-0-53" name="__codelineno-0-53"></a><span class="sd">            generate_cols (List[str]): (optional) columns that should be synthesized</span>
-<a id="__codelineno-0-54" name="__codelineno-0-54"></a><span class="sd">            exclude_cols (List[str]): (optional) columns that should not be synthesized</span>
-<a id="__codelineno-0-55" name="__codelineno-0-55"></a><span class="sd">            dtypes (Dict[str, Union[str, DataType]]): (optional) datatype mapping that will overwrite the datasource metadata column datatypes</span>
-<a id="__codelineno-0-56" name="__codelineno-0-56"></a><span class="sd">            target (Optional[str]): (optional) Target column</span>
-<a id="__codelineno-0-57" name="__codelineno-0-57"></a><span class="sd">            name (Optional[str]): (optional) Synthesizer instance name</span>
-<a id="__codelineno-0-58" name="__codelineno-0-58"></a><span class="sd">            anonymize (Optional[str]): (optional) fields to anonymize and the anonymization strategy</span>
-<a id="__codelineno-0-59" name="__codelineno-0-59"></a><span class="sd">            condition_on: (Optional[List[str]]): (optional) list of features to condition upon</span>
-<a id="__codelineno-0-60" name="__codelineno-0-60"></a><span class="sd">        &quot;&quot;&quot;</span>
-<a id="__codelineno-0-61" name="__codelineno-0-61"></a>        <span class="n">BaseSynthesizer</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">datatype</span><span class="o">=</span><span class="n">DataSourceType</span><span class="o">.</span><span class="n">TABULAR</span><span class="p">,</span> <span class="n">entities</span><span class="o">=</span><span class="n">entities</span><span class="p">,</span>
-<a id="__codelineno-0-62" name="__codelineno-0-62"></a>                            <span class="n">generate_cols</span><span class="o">=</span><span class="n">generate_cols</span><span class="p">,</span> <span class="n">exclude_cols</span><span class="o">=</span><span class="n">exclude_cols</span><span class="p">,</span> <span class="n">dtypes</span><span class="o">=</span><span class="n">dtypes</span><span class="p">,</span>
-<a id="__codelineno-0-63" name="__codelineno-0-63"></a>                            <span class="n">target</span><span class="o">=</span><span class="n">target</span><span class="p">,</span> <span class="n">anonymize</span><span class="o">=</span><span class="n">anonymize</span><span class="p">,</span> <span class="n">privacy_level</span><span class="o">=</span><span class="n">privacy_level</span><span class="p">,</span>
-<a id="__codelineno-0-64" name="__codelineno-0-64"></a>                            <span class="n">condition_on</span><span class="o">=</span><span class="n">condition_on</span><span class="p">)</span>
-<a id="__codelineno-0-65" name="__codelineno-0-65"></a>
-<a id="__codelineno-0-66" name="__codelineno-0-66"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<a id="__codelineno-0-67" name="__codelineno-0-67"></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-<a id="__codelineno-0-68" name="__codelineno-0-68"></a>            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="fm">__repr__</span><span class="p">()</span>
-<a id="__codelineno-0-69" name="__codelineno-0-69"></a>        <span class="k">else</span><span class="p">:</span>
-<a id="__codelineno-0-70" name="__codelineno-0-70"></a>            <span class="k">return</span> <span class="s2">&quot;RegularSynthesizer(Not Initialized)&quot;</span>
+<span class="normal"><a href="#__codelineno-0-69">69</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="k">class</span><span class="w"> </span><span class="nc">RegularSynthesizer</span><span class="p">(</span><span class="n">BaseSynthesizer</span><span class="p">):</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13"></a>
+<a id="__codelineno-0-14" name="__codelineno-0-14"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">sample</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_samples</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">condition_on</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pdDataFrame</span><span class="p">:</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Sample from a [`RegularSynthesizer`][ydata.sdk.synthesizers.RegularSynthesizer]</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="sd">        instance.</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17"></a>
+<a id="__codelineno-0-18" name="__codelineno-0-18"></a><span class="sd">        Arguments:</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="sd">            n_samples (int): number of rows in the sample</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20"></a><span class="sd">            condition_on: (Optional[dict]): (optional) conditional sampling parameters</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21"></a>
+<a id="__codelineno-0-22" name="__codelineno-0-22"></a><span class="sd">        Returns:</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23"></a><span class="sd">            synthetic data</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24"></a><span class="sd">        &quot;&quot;&quot;</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25"></a>        <span class="k">if</span> <span class="n">n_samples</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26"></a>            <span class="k">raise</span> <span class="n">InputError</span><span class="p">(</span><span class="s2">&quot;Parameter &#39;n_samples&#39; must be greater than 0&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27"></a>
+<a id="__codelineno-0-28" name="__codelineno-0-28"></a>        <span class="n">payload</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;numberOfRecords&quot;</span><span class="p">:</span> <span class="n">n_samples</span><span class="p">}</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29"></a>        <span class="k">if</span> <span class="n">condition_on</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-0-30" name="__codelineno-0-30"></a>            <span class="n">payload</span><span class="p">[</span><span class="s2">&quot;extraData&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-0-31" name="__codelineno-0-31"></a>                <span class="s2">&quot;condition_on&quot;</span><span class="p">:</span> <span class="n">condition_on</span>
+<a id="__codelineno-0-32" name="__codelineno-0-32"></a>            <span class="p">}</span>
+<a id="__codelineno-0-33" name="__codelineno-0-33"></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sample</span><span class="p">(</span><span class="n">payload</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span>
+<a id="__codelineno-0-34" name="__codelineno-0-34"></a>
+<a id="__codelineno-0-35" name="__codelineno-0-35"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span>
+<a id="__codelineno-0-36" name="__codelineno-0-36"></a>            <span class="n">privacy_level</span><span class="p">:</span> <span class="n">PrivacyLevel</span> <span class="o">=</span> <span class="n">PrivacyLevel</span><span class="o">.</span><span class="n">HIGH_FIDELITY</span><span class="p">,</span>
+<a id="__codelineno-0-37" name="__codelineno-0-37"></a>            <span class="n">entities</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-0-38" name="__codelineno-0-38"></a>            <span class="n">generate_cols</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-0-39" name="__codelineno-0-39"></a>            <span class="n">exclude_cols</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-0-40" name="__codelineno-0-40"></a>            <span class="n">dtypes</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">DataType</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-0-41" name="__codelineno-0-41"></a>            <span class="n">target</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-0-42" name="__codelineno-0-42"></a>            <span class="n">anonymize</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-0-43" name="__codelineno-0-43"></a>            <span class="n">condition_on</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-0-44" name="__codelineno-0-44"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Fit the synthesizer.</span>
+<a id="__codelineno-0-45" name="__codelineno-0-45"></a>
+<a id="__codelineno-0-46" name="__codelineno-0-46"></a><span class="sd">        The synthesizer accepts as training dataset either a pandas [`DataFrame`][pandas.DataFrame] directly or a YData [`DataSource`][ydata.sdk.datasources.DataSource].</span>
+<a id="__codelineno-0-47" name="__codelineno-0-47"></a>
+<a id="__codelineno-0-48" name="__codelineno-0-48"></a><span class="sd">        Arguments:</span>
+<a id="__codelineno-0-49" name="__codelineno-0-49"></a><span class="sd">            X (Union[DataSource, pandas.DataFrame]): Training dataset</span>
+<a id="__codelineno-0-50" name="__codelineno-0-50"></a><span class="sd">            privacy_level (PrivacyLevel): Synthesizer privacy level (defaults to high fidelity)</span>
+<a id="__codelineno-0-51" name="__codelineno-0-51"></a><span class="sd">            entities (Union[str, List[str]]): (optional) columns representing entities ID</span>
+<a id="__codelineno-0-52" name="__codelineno-0-52"></a><span class="sd">            generate_cols (List[str]): (optional) columns that should be synthesized</span>
+<a id="__codelineno-0-53" name="__codelineno-0-53"></a><span class="sd">            exclude_cols (List[str]): (optional) columns that should not be synthesized</span>
+<a id="__codelineno-0-54" name="__codelineno-0-54"></a><span class="sd">            dtypes (Dict[str, Union[str, DataType]]): (optional) datatype mapping that will overwrite the datasource metadata column datatypes</span>
+<a id="__codelineno-0-55" name="__codelineno-0-55"></a><span class="sd">            target (Optional[str]): (optional) Target column</span>
+<a id="__codelineno-0-56" name="__codelineno-0-56"></a><span class="sd">            name (Optional[str]): (optional) Synthesizer instance name</span>
+<a id="__codelineno-0-57" name="__codelineno-0-57"></a><span class="sd">            anonymize (Optional[str]): (optional) fields to anonymize and the anonymization strategy</span>
+<a id="__codelineno-0-58" name="__codelineno-0-58"></a><span class="sd">            condition_on: (Optional[List[str]]): (optional) list of features to condition upon</span>
+<a id="__codelineno-0-59" name="__codelineno-0-59"></a><span class="sd">        &quot;&quot;&quot;</span>
+<a id="__codelineno-0-60" name="__codelineno-0-60"></a>        <span class="n">BaseSynthesizer</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">datatype</span><span class="o">=</span><span class="n">DataSourceType</span><span class="o">.</span><span class="n">TABULAR</span><span class="p">,</span> <span class="n">entities</span><span class="o">=</span><span class="n">entities</span><span class="p">,</span>
+<a id="__codelineno-0-61" name="__codelineno-0-61"></a>                            <span class="n">generate_cols</span><span class="o">=</span><span class="n">generate_cols</span><span class="p">,</span> <span class="n">exclude_cols</span><span class="o">=</span><span class="n">exclude_cols</span><span class="p">,</span> <span class="n">dtypes</span><span class="o">=</span><span class="n">dtypes</span><span class="p">,</span>
+<a id="__codelineno-0-62" name="__codelineno-0-62"></a>                            <span class="n">target</span><span class="o">=</span><span class="n">target</span><span class="p">,</span> <span class="n">anonymize</span><span class="o">=</span><span class="n">anonymize</span><span class="p">,</span> <span class="n">privacy_level</span><span class="o">=</span><span class="n">privacy_level</span><span class="p">,</span>
+<a id="__codelineno-0-63" name="__codelineno-0-63"></a>                            <span class="n">condition_on</span><span class="o">=</span><span class="n">condition_on</span><span class="p">)</span>
+<a id="__codelineno-0-64" name="__codelineno-0-64"></a>
+<a id="__codelineno-0-65" name="__codelineno-0-65"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a id="__codelineno-0-66" name="__codelineno-0-66"></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-0-67" name="__codelineno-0-67"></a>            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="fm">__repr__</span><span class="p">()</span>
+<a id="__codelineno-0-68" name="__codelineno-0-68"></a>        <span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-0-69" name="__codelineno-0-69"></a>            <span class="k">return</span> <span class="s2">&quot;RegularSynthesizer(Not Initialized)&quot;</span>
 </code></pre></div></td></tr></table></div>
               </details>
 
@@ -3592,7 +3592,7 @@
                 <code>X</code>
             </td>
             <td>
-                  <code><a class="autorefs autorefs-external" title="typing.Union" href="https://docs.python.org/3/library/typing.html#typing.Union">Union</a>[<a class="autorefs autorefs-internal" title="ydata.sdk.datasources.DataSource" href="../../datasources/datasource/#ydata.sdk.datasources.datasource.DataSource">DataSource</a>, <a class="autorefs autorefs-external" title="pandas.DataFrame" href="http://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame">DataFrame</a>]</code>
+                  <code><a class="autorefs autorefs-external" title="typing.Union" href="https://docs.python.org/3/library/typing.html#typing.Union">Union</a>[DataSource, <a class="autorefs autorefs-external" title="pandas.DataFrame" href="http://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html#pandas.DataFrame">DataFrame</a>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3752,7 +3752,8 @@
 
             <details class="quote">
               <summary>Source code in <code>ydata/sdk/synthesizers/regular.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-36">36</a></span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-35">35</a></span>
+<span class="normal"><a href="#__codelineno-0-36">36</a></span>
 <span class="normal"><a href="#__codelineno-0-37">37</a></span>
 <span class="normal"><a href="#__codelineno-0-38">38</a></span>
 <span class="normal"><a href="#__codelineno-0-39">39</a></span>
@@ -3779,36 +3780,35 @@
 <span class="normal"><a href="#__codelineno-0-60">60</a></span>
 <span class="normal"><a href="#__codelineno-0-61">61</a></span>
 <span class="normal"><a href="#__codelineno-0-62">62</a></span>
-<span class="normal"><a href="#__codelineno-0-63">63</a></span>
-<span class="normal"><a href="#__codelineno-0-64">64</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-36" name="__codelineno-0-36"></a><span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">DataSource</span><span class="p">,</span> <span class="n">pdDataFrame</span><span class="p">],</span>
-<a id="__codelineno-0-37" name="__codelineno-0-37"></a>        <span class="n">privacy_level</span><span class="p">:</span> <span class="n">PrivacyLevel</span> <span class="o">=</span> <span class="n">PrivacyLevel</span><span class="o">.</span><span class="n">HIGH_FIDELITY</span><span class="p">,</span>
-<a id="__codelineno-0-38" name="__codelineno-0-38"></a>        <span class="n">entities</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<a id="__codelineno-0-39" name="__codelineno-0-39"></a>        <span class="n">generate_cols</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<a id="__codelineno-0-40" name="__codelineno-0-40"></a>        <span class="n">exclude_cols</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<a id="__codelineno-0-41" name="__codelineno-0-41"></a>        <span class="n">dtypes</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">DataType</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<a id="__codelineno-0-42" name="__codelineno-0-42"></a>        <span class="n">target</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<a id="__codelineno-0-43" name="__codelineno-0-43"></a>        <span class="n">anonymize</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<a id="__codelineno-0-44" name="__codelineno-0-44"></a>        <span class="n">condition_on</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<a id="__codelineno-0-45" name="__codelineno-0-45"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Fit the synthesizer.</span>
-<a id="__codelineno-0-46" name="__codelineno-0-46"></a>
-<a id="__codelineno-0-47" name="__codelineno-0-47"></a><span class="sd">    The synthesizer accepts as training dataset either a pandas [`DataFrame`][pandas.DataFrame] directly or a YData [`DataSource`][ydata.sdk.datasources.DataSource].</span>
-<a id="__codelineno-0-48" name="__codelineno-0-48"></a>
-<a id="__codelineno-0-49" name="__codelineno-0-49"></a><span class="sd">    Arguments:</span>
-<a id="__codelineno-0-50" name="__codelineno-0-50"></a><span class="sd">        X (Union[DataSource, pandas.DataFrame]): Training dataset</span>
-<a id="__codelineno-0-51" name="__codelineno-0-51"></a><span class="sd">        privacy_level (PrivacyLevel): Synthesizer privacy level (defaults to high fidelity)</span>
-<a id="__codelineno-0-52" name="__codelineno-0-52"></a><span class="sd">        entities (Union[str, List[str]]): (optional) columns representing entities ID</span>
-<a id="__codelineno-0-53" name="__codelineno-0-53"></a><span class="sd">        generate_cols (List[str]): (optional) columns that should be synthesized</span>
-<a id="__codelineno-0-54" name="__codelineno-0-54"></a><span class="sd">        exclude_cols (List[str]): (optional) columns that should not be synthesized</span>
-<a id="__codelineno-0-55" name="__codelineno-0-55"></a><span class="sd">        dtypes (Dict[str, Union[str, DataType]]): (optional) datatype mapping that will overwrite the datasource metadata column datatypes</span>
-<a id="__codelineno-0-56" name="__codelineno-0-56"></a><span class="sd">        target (Optional[str]): (optional) Target column</span>
-<a id="__codelineno-0-57" name="__codelineno-0-57"></a><span class="sd">        name (Optional[str]): (optional) Synthesizer instance name</span>
-<a id="__codelineno-0-58" name="__codelineno-0-58"></a><span class="sd">        anonymize (Optional[str]): (optional) fields to anonymize and the anonymization strategy</span>
-<a id="__codelineno-0-59" name="__codelineno-0-59"></a><span class="sd">        condition_on: (Optional[List[str]]): (optional) list of features to condition upon</span>
-<a id="__codelineno-0-60" name="__codelineno-0-60"></a><span class="sd">    &quot;&quot;&quot;</span>
-<a id="__codelineno-0-61" name="__codelineno-0-61"></a>    <span class="n">BaseSynthesizer</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">datatype</span><span class="o">=</span><span class="n">DataSourceType</span><span class="o">.</span><span class="n">TABULAR</span><span class="p">,</span> <span class="n">entities</span><span class="o">=</span><span class="n">entities</span><span class="p">,</span>
-<a id="__codelineno-0-62" name="__codelineno-0-62"></a>                        <span class="n">generate_cols</span><span class="o">=</span><span class="n">generate_cols</span><span class="p">,</span> <span class="n">exclude_cols</span><span class="o">=</span><span class="n">exclude_cols</span><span class="p">,</span> <span class="n">dtypes</span><span class="o">=</span><span class="n">dtypes</span><span class="p">,</span>
-<a id="__codelineno-0-63" name="__codelineno-0-63"></a>                        <span class="n">target</span><span class="o">=</span><span class="n">target</span><span class="p">,</span> <span class="n">anonymize</span><span class="o">=</span><span class="n">anonymize</span><span class="p">,</span> <span class="n">privacy_level</span><span class="o">=</span><span class="n">privacy_level</span><span class="p">,</span>
-<a id="__codelineno-0-64" name="__codelineno-0-64"></a>                        <span class="n">condition_on</span><span class="o">=</span><span class="n">condition_on</span><span class="p">)</span>
+<span class="normal"><a href="#__codelineno-0-63">63</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-35" name="__codelineno-0-35"></a><span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span>
+<a id="__codelineno-0-36" name="__codelineno-0-36"></a>        <span class="n">privacy_level</span><span class="p">:</span> <span class="n">PrivacyLevel</span> <span class="o">=</span> <span class="n">PrivacyLevel</span><span class="o">.</span><span class="n">HIGH_FIDELITY</span><span class="p">,</span>
+<a id="__codelineno-0-37" name="__codelineno-0-37"></a>        <span class="n">entities</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-0-38" name="__codelineno-0-38"></a>        <span class="n">generate_cols</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-0-39" name="__codelineno-0-39"></a>        <span class="n">exclude_cols</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-0-40" name="__codelineno-0-40"></a>        <span class="n">dtypes</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">DataType</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-0-41" name="__codelineno-0-41"></a>        <span class="n">target</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-0-42" name="__codelineno-0-42"></a>        <span class="n">anonymize</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-0-43" name="__codelineno-0-43"></a>        <span class="n">condition_on</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-0-44" name="__codelineno-0-44"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Fit the synthesizer.</span>
+<a id="__codelineno-0-45" name="__codelineno-0-45"></a>
+<a id="__codelineno-0-46" name="__codelineno-0-46"></a><span class="sd">    The synthesizer accepts as training dataset either a pandas [`DataFrame`][pandas.DataFrame] directly or a YData [`DataSource`][ydata.sdk.datasources.DataSource].</span>
+<a id="__codelineno-0-47" name="__codelineno-0-47"></a>
+<a id="__codelineno-0-48" name="__codelineno-0-48"></a><span class="sd">    Arguments:</span>
+<a id="__codelineno-0-49" name="__codelineno-0-49"></a><span class="sd">        X (Union[DataSource, pandas.DataFrame]): Training dataset</span>
+<a id="__codelineno-0-50" name="__codelineno-0-50"></a><span class="sd">        privacy_level (PrivacyLevel): Synthesizer privacy level (defaults to high fidelity)</span>
+<a id="__codelineno-0-51" name="__codelineno-0-51"></a><span class="sd">        entities (Union[str, List[str]]): (optional) columns representing entities ID</span>
+<a id="__codelineno-0-52" name="__codelineno-0-52"></a><span class="sd">        generate_cols (List[str]): (optional) columns that should be synthesized</span>
+<a id="__codelineno-0-53" name="__codelineno-0-53"></a><span class="sd">        exclude_cols (List[str]): (optional) columns that should not be synthesized</span>
+<a id="__codelineno-0-54" name="__codelineno-0-54"></a><span class="sd">        dtypes (Dict[str, Union[str, DataType]]): (optional) datatype mapping that will overwrite the datasource metadata column datatypes</span>
+<a id="__codelineno-0-55" name="__codelineno-0-55"></a><span class="sd">        target (Optional[str]): (optional) Target column</span>
+<a id="__codelineno-0-56" name="__codelineno-0-56"></a><span class="sd">        name (Optional[str]): (optional) Synthesizer instance name</span>
+<a id="__codelineno-0-57" name="__codelineno-0-57"></a><span class="sd">        anonymize (Optional[str]): (optional) fields to anonymize and the anonymization strategy</span>
+<a id="__codelineno-0-58" name="__codelineno-0-58"></a><span class="sd">        condition_on: (Optional[List[str]]): (optional) list of features to condition upon</span>
+<a id="__codelineno-0-59" name="__codelineno-0-59"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-0-60" name="__codelineno-0-60"></a>    <span class="n">BaseSynthesizer</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">datatype</span><span class="o">=</span><span class="n">DataSourceType</span><span class="o">.</span><span class="n">TABULAR</span><span class="p">,</span> <span class="n">entities</span><span class="o">=</span><span class="n">entities</span><span class="p">,</span>
+<a id="__codelineno-0-61" name="__codelineno-0-61"></a>                        <span class="n">generate_cols</span><span class="o">=</span><span class="n">generate_cols</span><span class="p">,</span> <span class="n">exclude_cols</span><span class="o">=</span><span class="n">exclude_cols</span><span class="p">,</span> <span class="n">dtypes</span><span class="o">=</span><span class="n">dtypes</span><span class="p">,</span>
+<a id="__codelineno-0-62" name="__codelineno-0-62"></a>                        <span class="n">target</span><span class="o">=</span><span class="n">target</span><span class="p">,</span> <span class="n">anonymize</span><span class="o">=</span><span class="n">anonymize</span><span class="p">,</span> <span class="n">privacy_level</span><span class="o">=</span><span class="n">privacy_level</span><span class="p">,</span>
+<a id="__codelineno-0-63" name="__codelineno-0-63"></a>                        <span class="n">condition_on</span><span class="o">=</span><span class="n">condition_on</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
             </details>
     </div>
@@ -3901,7 +3901,8 @@ instance.</p>
 
             <details class="quote">
               <summary>Source code in <code>ydata/sdk/synthesizers/regular.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-15">15</a></span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-14">14</a></span>
+<span class="normal"><a href="#__codelineno-0-15">15</a></span>
 <span class="normal"><a href="#__codelineno-0-16">16</a></span>
 <span class="normal"><a href="#__codelineno-0-17">17</a></span>
 <span class="normal"><a href="#__codelineno-0-18">18</a></span>
@@ -3919,27 +3920,26 @@ instance.</p>
 <span class="normal"><a href="#__codelineno-0-30">30</a></span>
 <span class="normal"><a href="#__codelineno-0-31">31</a></span>
 <span class="normal"><a href="#__codelineno-0-32">32</a></span>
-<span class="normal"><a href="#__codelineno-0-33">33</a></span>
-<span class="normal"><a href="#__codelineno-0-34">34</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="k">def</span><span class="w"> </span><span class="nf">sample</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_samples</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">condition_on</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pdDataFrame</span><span class="p">:</span>
-<a id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Sample from a [`RegularSynthesizer`][ydata.sdk.synthesizers.RegularSynthesizer]</span>
-<a id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="sd">    instance.</span>
-<a id="__codelineno-0-18" name="__codelineno-0-18"></a>
-<a id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="sd">    Arguments:</span>
-<a id="__codelineno-0-20" name="__codelineno-0-20"></a><span class="sd">        n_samples (int): number of rows in the sample</span>
-<a id="__codelineno-0-21" name="__codelineno-0-21"></a><span class="sd">        condition_on: (Optional[dict]): (optional) conditional sampling parameters</span>
-<a id="__codelineno-0-22" name="__codelineno-0-22"></a>
-<a id="__codelineno-0-23" name="__codelineno-0-23"></a><span class="sd">    Returns:</span>
-<a id="__codelineno-0-24" name="__codelineno-0-24"></a><span class="sd">        synthetic data</span>
-<a id="__codelineno-0-25" name="__codelineno-0-25"></a><span class="sd">    &quot;&quot;&quot;</span>
-<a id="__codelineno-0-26" name="__codelineno-0-26"></a>    <span class="k">if</span> <span class="n">n_samples</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
-<a id="__codelineno-0-27" name="__codelineno-0-27"></a>        <span class="k">raise</span> <span class="n">InputError</span><span class="p">(</span><span class="s2">&quot;Parameter &#39;n_samples&#39; must be greater than 0&quot;</span><span class="p">)</span>
-<a id="__codelineno-0-28" name="__codelineno-0-28"></a>
-<a id="__codelineno-0-29" name="__codelineno-0-29"></a>    <span class="n">payload</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;numberOfRecords&quot;</span><span class="p">:</span> <span class="n">n_samples</span><span class="p">}</span>
-<a id="__codelineno-0-30" name="__codelineno-0-30"></a>    <span class="k">if</span> <span class="n">condition_on</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-<a id="__codelineno-0-31" name="__codelineno-0-31"></a>        <span class="n">payload</span><span class="p">[</span><span class="s2">&quot;extraData&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
-<a id="__codelineno-0-32" name="__codelineno-0-32"></a>            <span class="s2">&quot;condition_on&quot;</span><span class="p">:</span> <span class="n">condition_on</span>
-<a id="__codelineno-0-33" name="__codelineno-0-33"></a>        <span class="p">}</span>
-<a id="__codelineno-0-34" name="__codelineno-0-34"></a>    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sample</span><span class="p">(</span><span class="n">payload</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span>
+<span class="normal"><a href="#__codelineno-0-33">33</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="k">def</span><span class="w"> </span><span class="nf">sample</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_samples</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">condition_on</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pdDataFrame</span><span class="p">:</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Sample from a [`RegularSynthesizer`][ydata.sdk.synthesizers.RegularSynthesizer]</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="sd">    instance.</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17"></a>
+<a id="__codelineno-0-18" name="__codelineno-0-18"></a><span class="sd">    Arguments:</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="sd">        n_samples (int): number of rows in the sample</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20"></a><span class="sd">        condition_on: (Optional[dict]): (optional) conditional sampling parameters</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21"></a>
+<a id="__codelineno-0-22" name="__codelineno-0-22"></a><span class="sd">    Returns:</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23"></a><span class="sd">        synthetic data</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25"></a>    <span class="k">if</span> <span class="n">n_samples</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26"></a>        <span class="k">raise</span> <span class="n">InputError</span><span class="p">(</span><span class="s2">&quot;Parameter &#39;n_samples&#39; must be greater than 0&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27"></a>
+<a id="__codelineno-0-28" name="__codelineno-0-28"></a>    <span class="n">payload</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;numberOfRecords&quot;</span><span class="p">:</span> <span class="n">n_samples</span><span class="p">}</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29"></a>    <span class="k">if</span> <span class="n">condition_on</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-0-30" name="__codelineno-0-30"></a>        <span class="n">payload</span><span class="p">[</span><span class="s2">&quot;extraData&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-0-31" name="__codelineno-0-31"></a>            <span class="s2">&quot;condition_on&quot;</span><span class="p">:</span> <span class="n">condition_on</span>
+<a id="__codelineno-0-32" name="__codelineno-0-32"></a>        <span class="p">}</span>
+<a id="__codelineno-0-33" name="__codelineno-0-33"></a>    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sample</span><span class="p">(</span><span class="n">payload</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
             </details>
     </div>
