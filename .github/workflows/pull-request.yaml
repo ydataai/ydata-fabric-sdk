@@ -124,9 +124,13 @@ jobs:
         make install-test
 
     - name: Unit Tests
+      env:
+        YDATA_FABRIC_SDK_NO_ANALYTICS: "True"
       run: |
         make test
 
     - name: Coverage Tests
+      env:
+        YDATA_FABRIC_SDK_NO_ANALYTICS: "True"
       run: |
         make test-cov

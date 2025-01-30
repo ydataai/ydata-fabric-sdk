@@ -4,7 +4,7 @@ YData SDK is generally available through both Pypi and Conda allowing an easy pr
 YData SDK is available for the public through a token-based authentication system. If you don’t have one yet, you can get your free license key during the installation process. You can check what features are available in the free version here.
 
 ##Installing the package
-YData SDK supports python versions bigger than python 3.8, and can be installed in Windows, Linux or MacOS operating systems.
+YData SDK supports python versions bigger than python 3.10, and can be installed in Windows, Linux or MacOS operating systems.
 
 Prior to the package installation, it is recommended the creation of a virtual or conda environment:
 
