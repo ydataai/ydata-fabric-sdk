@@ -22,7 +22,6 @@ class TableColumn(BaseModel):
     nullable: bool
 
 
-
 class Table(BaseModel):
     """Class to store the table columns information."""
     model_config = BaseConfig()
