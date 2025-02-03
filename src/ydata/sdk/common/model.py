@@ -1,10 +1,10 @@
 from pydantic import BaseModel as PydanticBaseModel
-from pydantic import Extra
+from pydantic import ConfigDict
 
 
-class Config:
-    allow_population_by_field_name = True
-    extra = Extra.ignore
+class Config(ConfigDict):
+    populate_by_name = True
+    extra = 'allow'
     use_enum_values = True
 
 
@@ -13,4 +13,4 @@ class BaseModel(PydanticBaseModel):
 
     All datamodel from YData SDK inherits from this class.
     """
-    Config = Config
+    model_config = Config()
