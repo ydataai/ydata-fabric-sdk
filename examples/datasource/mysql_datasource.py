@@ -3,7 +3,7 @@
 """
 import os
 
-from ydata.sdk.connectors import Connector, ConnectorType
+from ydata.sdk.connectors import Connector
 from ydata.sdk.datasources import DataSource
 from ydata.sdk.datasources.datasource import DataSourceType
 
@@ -37,5 +37,4 @@ if __name__ == '__main__':
     datasource = DataSource(datatype=DataSourceType.TABULAR,
                             connector=conn,
                             name="MySQL Berka - SDK")
-                                #query={'query': 'SELECT * FROM trans;'})
-
+    # query={'query': 'SELECT * FROM trans;'})
