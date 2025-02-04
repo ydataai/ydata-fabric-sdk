@@ -1,4 +1,4 @@
-from pydantic import Field, ConfigDict
+from pydantic import ConfigDict, Field
 
 from ydata.sdk.common.model import BaseModel
 from ydata.sdk.datasources._models.metadata.data_types import DataType, VariableType
@@ -6,7 +6,7 @@ from ydata.sdk.datasources._models.metadata.data_types import DataType, Variable
 
 class Column(BaseModel):
     model_config = ConfigDict(
-        use_enum_values = True
+        use_enum_values=True
     )
 
     name: str
