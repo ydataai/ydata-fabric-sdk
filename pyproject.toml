@@ -42,8 +42,9 @@ dependencies = [
     "pandas>=1.5.0",
     "prettytable==3.13.*",
     "pydantic>=2.0.0",
-    "typeguard==2.13.3",
-    "ydata-datascience"
+    "typeguard>=2.13.3",
+    "ydata-datascience",
+    "requests"
 ]
 
 [project.license]

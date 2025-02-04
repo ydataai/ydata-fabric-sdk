@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, asdict
 
 from ydata.sdk.datasources._models.datasource import DataSource
 
@@ -10,4 +10,5 @@ class MySQLDataSource(DataSource):
     tables: dict = None
 
     def to_payload(self):
-        self.dict()
+        return asdict(self)
+

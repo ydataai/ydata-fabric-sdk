@@ -150,9 +150,13 @@ class Connector(ModelFactoryMixin):
 
         payload = {
             "type": connector_type.value,
-            "credentials": credentials.dict(by_alias=True)
+            "credentials": credentials if isinstance(credentials, dict) else credentials.dict(by_alias=True)
         }
-        model = connector_class._create(payload, name, project, client)
+
+        if client is None:
+            model = connector_class._create(payload, name, project)
+        else:
+            model = connector_class._create(payload, name, project, client)
 
         connector = connector_class._init_from_model_data(model)
         connector._project = project
