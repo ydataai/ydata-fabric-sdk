@@ -43,7 +43,8 @@ dependencies = [
     "prettytable==3.13.*",
     "pydantic>=2.0.0",
     "typeguard==2.13.3",
-    "ydata-datascience"
+    "ydata-datascience",
+    "requests==2.*",
 ]
 
 [project.license]
