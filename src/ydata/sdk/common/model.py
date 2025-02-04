@@ -1,4 +1,5 @@
-from pydantic import BaseModel as PydanticBaseModel, ConfigDict
+from pydantic import BaseModel as PydanticBaseModel
+from pydantic import ConfigDict
 
 
 class Config(ConfigDict):
