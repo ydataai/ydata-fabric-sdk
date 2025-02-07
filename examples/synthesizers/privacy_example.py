@@ -1,10 +1,11 @@
 import os
 
+from ydata.sdk.dataset import get_dataset
+from ydata.sdk.synthesizers import PrivacyLevel, RegularSynthesizer
+
 # Do not forget to add your token as env variables
 os.environ["YDATA_TOKEN"] = '{insert-your-token}'  # Remove if already defined
 
-from ydata.sdk.dataset import get_dataset
-from ydata.sdk.synthesizers import PrivacyLevel, RegularSynthesizer
 
 def main():
     """In this example, we demonstrate how to train a synthesizer
