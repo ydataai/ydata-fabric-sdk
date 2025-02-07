@@ -56,7 +56,7 @@ class Connector(ModelFactoryMixin):
                                   name=name, project=project,
                                   client=client)
 
-        #self._model = _connector_type_to_model(ConnectorType._init_connector_type(connector_type))._create_model(
+        # self._model = _connector_type_to_model(ConnectorType._init_connector_type(connector_type))._create_model(
         #    connector_type, credentials, name, client=client)
 
         self._project = project
