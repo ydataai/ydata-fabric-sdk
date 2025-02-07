@@ -20,10 +20,10 @@ class DataSource:
     connector_type: Optional[str] = None
 
     def __post_init__(self):
-        if self.metadata is not None:
+        if self.metadata is not None and not isinstance(self.metadata, Metadata):
             self.metadata = Metadata(**self.metadata)
 
-        if self.status is not None:
+        if self.status is not None and not isinstance(self.status, Status):
             self.status = Status(**self.status)
 
     def to_payload(self):

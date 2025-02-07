@@ -31,7 +31,7 @@ def get_datasource_info(dataframe, datatype):
         nrows, ncols = dataframe.shape[0], dataframe.shape[1]
         ntables = None  # calculate the number of rows and cols
     else:
-        connector = dataframe.connector_type
+        connector = dataframe._model.connector_type
         if DataSourceType(datatype) != DataSourceType.MULTITABLE:
             nrows = dataframe.metadata.number_of_rows
             ncols = len(dataframe.metadata.columns)
@@ -39,7 +39,7 @@ def get_datasource_info(dataframe, datatype):
         else:
             nrows = 0
             ncols = 0
-            ntables = len(dataframe.tables.keys())
+            ntables = len(dataframe._model.tables.keys())
     return connector, nrows, ncols, ntables
 
 

@@ -50,8 +50,11 @@ class Connector(ModelFactoryMixin):
             self, connector_type: Union[ConnectorType, str, None] = None, credentials: Optional[Dict] = None,
             name: Optional[str] = None, project: Optional[Project] = None, client: Optional[Client] = None):
         self._init_common(client=client)
-        self._model = _connector_type_to_model(ConnectorType._init_connector_type(connector_type))._create_model(
-            connector_type, credentials, name, client=client)
+
+        self._model = self.create(connector_type=connector_type,
+                                  credentials=credentials,
+                                  name=name, project=project,
+                                  client=client)
 
         self._project = project
 
@@ -150,9 +153,13 @@ class Connector(ModelFactoryMixin):
 
         payload = {
             "type": connector_type.value,
-            "credentials": credentials.dict(by_alias=True)
+            "credentials": credentials if isinstance(credentials, dict) else credentials.dict(by_alias=True)
         }
-        model = connector_class._create(payload, name, project, client)
+
+        if client is None:
+            model = connector_class._create(payload, name, project)
+        else:
+            model = connector_class._create(payload, name, project, client)
 
         connector = connector_class._init_from_model_data(model)
         connector._project = project

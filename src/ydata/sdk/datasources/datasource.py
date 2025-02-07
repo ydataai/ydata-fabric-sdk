@@ -60,6 +60,10 @@ class DataSource(ModelFactoryMixin):
         self._logger = create_logger(__name__, level=LOG_LEVEL)
 
     @property
+    def client(self):
+        return self._client
+
+    @property
     def uid(self) -> UID:
         return self._model.uid
 
@@ -127,7 +131,8 @@ class DataSource(ModelFactoryMixin):
         data: list = response.json()
         datasource_type = CONNECTOR_TO_DATASOURCE.get(
             ConnectorType(data['connector']['type']))
-        datasource = DataSource._model_from_api(data, datasource_type)
+        model = DataSource._model_from_api(data, datasource_type)
+        datasource = DataSource._init_from_model_data(model)
         datasource._project = project
         return datasource
 
@@ -152,6 +157,7 @@ class DataSource(ModelFactoryMixin):
             DataSource
         """
         datasource_type = CONNECTOR_TO_DATASOURCE.get(connector.type)
+
         return cls._create(
             connector=connector, datasource_type=datasource_type, datatype=datatype, config=config, name=name,
             project=project, wait_for_metadata=wait_for_metadata, client=client)
@@ -163,8 +169,14 @@ class DataSource(ModelFactoryMixin):
         name: Optional[str] = None, project: Optional[Project] = None, wait_for_metadata: bool = True,
         client: Optional[Client] = None
     ) -> "DataSource":
-        model = DataSource._create_model(
-            connector, datasource_type, datatype, config, name, project, client)
+
+        if client is None:
+            model = DataSource._create_model(
+                connector, datasource_type, datatype, config, name, project)
+        else:
+            model = DataSource._create_model(
+                connector, datasource_type, datatype, config, name, project, client)
+
         datasource = DataSource._init_from_model_data(model)
 
         if wait_for_metadata:
@@ -201,9 +213,10 @@ class DataSource(ModelFactoryMixin):
     @staticmethod
     def _wait_for_metadata(datasource):
         logger = create_logger(__name__, level=LOG_LEVEL)
+        client = datasource._client
         while State(datasource.status.state) not in [State.AVAILABLE, State.FAILED, State.UNAVAILABLE]:
             logger.info(f'Calculating metadata [{datasource.status}]')
-            datasource = DataSource.get(uid=datasource.uid, client=datasource._client)
+            datasource = DataSource.get(uid=datasource.uid, client=client)
             sleep(BACKOFF)
         return datasource
 
