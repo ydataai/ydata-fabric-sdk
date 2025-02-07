@@ -213,7 +213,7 @@ class DataSource(ModelFactoryMixin):
     @staticmethod
     def _wait_for_metadata(datasource):
         logger = create_logger(__name__, level=LOG_LEVEL)
-        client=datasource._client
+        client = datasource._client
         while State(datasource.status.state) not in [State.AVAILABLE, State.FAILED, State.UNAVAILABLE]:
             logger.info(f'Calculating metadata [{datasource.status}]')
             datasource = DataSource.get(uid=datasource.uid, client=client)
