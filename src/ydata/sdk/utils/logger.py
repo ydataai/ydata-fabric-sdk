@@ -39,7 +39,7 @@ def get_datasource_info(dataframe, datatype):
         else:
             nrows = 0
             ncols = 0
-            ntables = len(dataframe.tables.keys())
+            ntables = len(dataframe._model.tables.keys())
     return connector, nrows, ncols, ntables
 
 

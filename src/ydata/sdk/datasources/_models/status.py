@@ -21,6 +21,7 @@ class MetadataState(StringEnum):
     GENERATING = 'generating'
     FAILED = 'failed'
     AVAILABLE = 'available'
+    UNAVAILABLE = 'unavailable'
 
 
 class ProfilingState(StringEnum):
@@ -29,6 +30,7 @@ class ProfilingState(StringEnum):
     GENERATING = 'generating'
     FAILED = 'failed'
     AVAILABLE = 'available'
+    UNAVAILABLE = 'unavailable'
 
 
 class State(StringEnum):
@@ -73,6 +75,7 @@ class Status(BaseModel):
     validation: Optional[ValidationStatus] = Field(None)
     metadata: Optional[MetadataStatus] = Field(None)
     profiling: Optional[ProfilingStatus] = Field(None)
+    dependentSynthesizersNumber: Optional[int] = Field(None)
 
     @staticmethod
     def unknown() -> "Status":

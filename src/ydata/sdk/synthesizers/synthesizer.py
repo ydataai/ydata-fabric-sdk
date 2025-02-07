@@ -172,7 +172,7 @@ class BaseSynthesizer(ABC, ModelFactoryMixin):
                 raise DataTypeMissingError(
                     "Argument `datatype` is mandatory for pandas.DataFrame training data")
         elif datatype == DataSourceType.MULTITABLE:
-            tables = [t for t in X.tables.keys()]  # noqa: F841
+            tables = [t for t in X._model.tables.keys()]  # noqa: F841
             # Does it make sense to add more validations here?
         else:
             columns = [c.name for c in X.metadata.columns]
