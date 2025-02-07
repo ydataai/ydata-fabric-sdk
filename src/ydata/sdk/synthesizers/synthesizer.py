@@ -320,14 +320,14 @@ class BaseSynthesizer(ABC, ModelFactoryMixin):
         response = self._client.post(
             f"/synthesizer/{self.uid}/sample", json=payload, project=self._project)
 
-        data: Dict = response.json()
-        sample_uid = data.get('uid')
+        data = response.json()
+        sample_uid: str = data.get('uid')
         sample_status = None
         while sample_status not in ['finished', 'failed']:
             self._logger.info('Sampling from the synthesizer...')
             response = self._client.get(
                 f'/synthesizer/{self.uid}/history', project=self._project)
-            history: Dict = response.json()
+            history: list = response.json()
             sample_data = next((s for s in history if s.get('uid') == sample_uid), None)
             sample_status = sample_data.get('status', {}).get('state')
             sleep(BACKOFF)

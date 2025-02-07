@@ -1,11 +1,10 @@
 import os
 
+# Do not forget to add your token as env variables
+os.environ["YDATA_TOKEN"] = '{insert-your-token}'  # Remove if already defined
+
 from ydata.sdk.dataset import get_dataset
 from ydata.sdk.synthesizers import PrivacyLevel, RegularSynthesizer
-
-# Do not forget to add your token as env variables
-os.environ["YDATA_TOKEN"] = '<TOKEN>'  # Remove if already defined
-
 
 def main():
     """In this example, we demonstrate how to train a synthesizer
@@ -16,12 +15,11 @@ def main():
 
     # We initialize a regular synthesizer
     # As long as the synthesizer does not call `fit`, it exists only locally
-    synth = RegularSynthesizer()
+    synth = RegularSynthesizer(name='Titanic Privacy')
 
     # We train the synthesizer on our dataset setting the privacy level to high
     synth.fit(
         X,
-        name="titanic_synthesizer",
         privacy_level=PrivacyLevel.HIGH_PRIVACY
     )
 
