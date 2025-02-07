@@ -1,11 +1,12 @@
 import os
 
+from ydata.sdk.datasources import DataSource
+from ydata.sdk.synthesizers import RegularSynthesizer
+
 # Authenticate to Fabric to leverage the SDK - https://docs.sdk.ydata.ai/latest/sdk/installation/
 # Make sure to add your token as env variable.
 os.environ["YDATA_TOKEN"] = '{insert-token}'  # Remove if already defined
 
-from ydata.sdk.datasources import DataSource
-from ydata.sdk.synthesizers import RegularSynthesizer
 
 # In this example, we demonstrate how to train a synthesizer from an existing RDBMS Dataset.
 # Make sure to follow the step-by-step gu ide to create a Dataset in Fabric's catalog: https://docs.sdk.ydata.ai/latest/get-started/create_multitable_dataset/
