@@ -1,4 +1,4 @@
-# YData SDK in Databricks Notebooks
+# Fabric SDK in Databricks Notebooks
 
 The [YData Fabric SDK](https://pypi.org/project/ydata-fabric-sdk/) provides a powerful set of tools for integrating and enhancing data within Databricks notebooks.
 This guide covers the installation, basic usage, and advanced features of the Fabric SDK, helping users maximize
@@ -23,7 +23,7 @@ Databricks cluster to optimize performance.
 
 ### Installation
 
-To install the YData SDK in a Databricks notebook, use the following command:
+To install the Fabric SDK in a Databricks notebook, use the following command:
 ```python
 %pip install ydata-fabric-sdk
 dbutils.library.restartPython()
@@ -32,7 +32,7 @@ Ensure the installation is successful before proceeding to the next steps.
 
 ## Basic Usage - data integration
 This section provides step-by-step instructions on connecting to YData Fabric and performing essential
-data operations using the YData SDK within Databricks notebooks. This includes establishing a secure connection
+data operations using the Fabric SDK within Databricks notebooks. This includes establishing a secure connection
 to YData Fabric and accessing datasets.
 
 ### Connecting to YData Fabric

@@ -1,7 +1,7 @@
 # Quickstart
 
-YData SDK allows you to with an easy and familiar interface, to adopt a Data-Centric AI approach for the development of Machine Learning solutions.
-YData SDK features were designed to support structure data, including *tabular data*, *time-series* and *transactional data*.
+Fabric SDK allows you to with an easy and familiar interface, to adopt a Data-Centric AI approach for the development of AI solutions.
+Fabric SDK features were designed to support structure data, including *tabular data*, *time-series* and *transactional data*.
 
 ## Read data
 To start leveraging the package features you should consume your data either through the Connectors or pandas.Dataframe.

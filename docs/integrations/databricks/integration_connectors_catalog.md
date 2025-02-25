@@ -5,7 +5,7 @@ query, and manage your data in Databricks Unity Catalog and Delta Lake with ease
 setup, and usage of the Databricks' available connector in Fabric.
 
 !!! note "Prerequisites"
-    Before using the YData SDK in Databricks notebooks, ensure the following prerequisites are met:
+    Before using the Fabric SDK in Databricks notebooks, ensure the following prerequisites are met:
 
     - Access to a Databricks workspace
     - A valid YData Fabric account and API key

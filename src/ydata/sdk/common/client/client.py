@@ -17,9 +17,9 @@ from ydata.sdk.common.types import Project
 codes = http_codes
 
 HELP_TEXT = f"""
-YData SDK requires an account with a valid token.
+Fabric SDK requires an account with a valid token.
 
-In case you do not have an account, please, create one at https://ydata.ai/ydata-fabric-free-trial.
+In case you do not have an account, please contact YData at https://ydata.ai/contact-us.
 To obtain the token, please, login to https://{environ.get("YDATA_BASE_URL", DEFAULT_URL)}.
 The token is available on the homepage once you are connected.
 
@@ -30,7 +30,7 @@ The easiest way to have the client created is to define the token in an environm
     os.environ["{TOKEN_VAR}"] = <your_token>
     ```
 
-See the documentation for further help: https://docs.sdk.ydata.ai/latest/getting-started/installation/
+See the documentation for further help: https://docs.fabric.ydata.ai/latest/sdk/
 """
 
 
