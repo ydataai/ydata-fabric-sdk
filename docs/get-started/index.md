@@ -2,7 +2,6 @@
 
 The get started is here to help you if you are not yet familiar with YData Fabric or if you just want to learn more about
 data quality, data preparation workflows and how you can start leveraging synthetic data.
-<a href="fabric_community"><u>Mention to YData Fabric Community</u></a>
 
 ### 📚 <a href="upload_csv"><u>Create your first Dataset with the Data Catalog</u></a>
 ### 💾 <a href="create_multitable_dataset"><u>Create your Multi-Table Dataset with the Data Catalog</u></a>

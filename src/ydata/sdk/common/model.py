@@ -11,6 +11,6 @@ class Config(ConfigDict):
 class BaseModel(PydanticBaseModel):
     """BaseModel replacement from pydantic.
 
-    All datamodel from YData SDK inherits from this class.
+    All datamodel from Fabric SDK inherits from this class.
     """
     model_config = Config()
