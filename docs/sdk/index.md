@@ -1,15 +1,9 @@
 [![pypi](https://img.shields.io/pypi/v/ydata-fabric-sdk)](https://pypi.org/project/ydata-fabric-sdk)
 ![Pythonversion](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue)
 [![downloads](https://pepy.tech/badge/ydata-fabric-sdk/month)](https://pepy.tech/project/ydata-fabric-sdk)
-
 <img referrerpolicy="no-referrer-when-downgrade" src="https://static.scarf.sh/a.png?x-pxid=08dac575-f8f7-47d1-ad7d-58541aecd025" />
-
 The *Fabric SDK* is an ecosystem of methods that allows users to, through a python interface, adopt data development focused on improving the quality of the data.
 The solution includes a set of integrated components for data ingestion, standardized data quality evaluation and data improvement, such as *synthetic data generation*, allowing an iterative improvement of the datasets used in high-impact business applications.
-
-!!! note "YData Fabric SDK for improved data quality everywhere!"
-
-    To start using create a Fabric community account at ^^[ydata.ai/register](https://ydata.ai/ydata-fabric-free-trial)^^
 
 ## Benefits
 
