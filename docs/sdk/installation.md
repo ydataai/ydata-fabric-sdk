@@ -33,7 +33,7 @@ With your account toke copied, you can set a new environment variable `YDATA_TOK
 ``` python
     import os
 
-    os.setenv['YDATA_TOKEN'] = '{add-your-token}'
+    os.environ['YDATA_TOKEN'] = '{add-your-token}'
 ```
 
 Once you have set your token, you are good to go to start exploring the incredible world of data-centric AI and smart synthetic data generation!
