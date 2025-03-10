@@ -63,7 +63,7 @@ dev = [
     "isort==5.12.0",
     "pre-commit==2.21.0",
     "pyc_wheel==1.2.7",
-    "mypy==1.14.1",
+    "mypy==1.15.0",
 ]
 doc = [
     "mkdocs>=1.6.0,<1.7.0",
