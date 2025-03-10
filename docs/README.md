@@ -1,4 +1,4 @@
-# YData SDK Documentation
+# Fabric SDK Documentation
 
 Installing the documentation dependencies (one time step):
 ```bash

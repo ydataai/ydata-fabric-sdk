@@ -11,7 +11,7 @@ name = "ydata-fabric-sdk"
 authors = [
     {name = "YData", email = "opensource@ydata.ai"},
 ]
-description = "YData SDK allows to use the *Data-Centric* tools from the YData ecosystem to accelerate AI development"
+description = "Fabric SDK allows to use the *Data-Centric* tools from the YData Fabric ecosystem to accelerate AI development"
 readme = "README.md"
 requires-python = ">=3.10,<3.13"
 classifiers = [

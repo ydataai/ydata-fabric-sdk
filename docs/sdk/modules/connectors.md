@@ -1,6 +1,6 @@
 # Connectors
 
-YData SDK allows users to consume data assets from remote storages through **Connectors**. YData **Connectors** support different types of storages, from filesystems to RDBMS'.
+Fabric SDK allows users to consume data assets from remote storages through **Connectors**. YData **Connectors** support different types of storages, from filesystems to RDBMS'.
 
 Below the list of available connectors:
 

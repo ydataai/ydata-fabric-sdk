@@ -15,7 +15,6 @@ nav:
           - How to create your first Synthetic Data generator for databases: "get-started/create_database_sd_generator.md"
           - How to create your first Lab: "get-started/create_lab.md"
           - How to create your first Pipeline: "get-started/create_pipeline.md"
-      - Fabric Community: "get-started/fabric_community.md"
   - Data catalog:
       - 'data_catalog/index.md'
       - Connectors:
@@ -47,8 +46,8 @@ nav:
     - Databricks:
         - 'integrations/databricks/overview.md'
         - Connectors for Delta Lake & Unity Catalog: 'integrations/databricks/integration_connectors_catalog.md'
-        - YData SDK in Databricks notebooks: 'integrations/databricks/integration_with_sdk.md'
-  - SDK:
+        - Fabric SDK in Databricks notebooks: 'integrations/databricks/integration_with_sdk.md'
+  - Fabric SDK:
       - Overview: "sdk/index.md"
       - Installation: 'sdk/installation.md'
       - Quickstart: 'sdk/quickstart.md'
