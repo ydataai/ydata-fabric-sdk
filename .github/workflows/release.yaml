@@ -42,7 +42,7 @@ jobs:
       run: make package version=${{ github.ref_name }}
 
     - name: Upload Pipeline Artifacts
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       with:
         retention-days: 1
         name: built-artifacts
@@ -83,7 +83,7 @@ jobs:
         python -m pip install --upgrade pip
         make install-dev
 
-    - uses: actions/download-artifact@v4
+    - uses: actions/download-artifact@v8
       with:
         name: built-artifacts
         path: dist/
@@ -92,7 +92,7 @@ jobs:
       run: make wheel version=${{ github.ref_name }}
 
     - name: Upload Wheel
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       with:
         retention-days: 1
         name: compiled-wheels-${{ github.run_id }}-${{ github.run_attempt }}-${{ matrix.python-version }}
@@ -109,7 +109,7 @@ jobs:
     needs: compile-wheels
 
     steps:
-    - uses: actions/download-artifact@v4
+    - uses: actions/download-artifact@v8
       with:
         name: compiled-wheels-${{ github.run_id }}-${{ github.run_attempt }}-${{ matrix.python-version }}
         path: dist/
@@ -131,7 +131,7 @@ jobs:
     needs: compile-wheels
 
     steps:
-    - uses: actions/download-artifact@v4
+    - uses: actions/download-artifact@v8
       with:
         name: compiled-wheels-${{ github.run_id }}-${{ github.run_attempt }}-${{ matrix.python-version }}
         path: dist/
